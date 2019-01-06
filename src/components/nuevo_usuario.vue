@@ -188,7 +188,7 @@ methods:{
                        this.nuevo_nombre_aseguradora = '';
                        this.nuevo_tipo_aseguradora = '';
                        this.nuevo_numero_tarjeta = '';
-                       localStorage.setItem('usuarios-vue', JSON.stringify(this.pacientes));
+                       localStorage.setItem('usuarios-vue', JSON.stringify(this.usuarios));
                        swal('Guardado','los datos del paciente se guardaron','success');
            }
             
@@ -196,45 +196,43 @@ methods:{
 agregar_profesional(){
            this.pacientes.push(
                    {
-                       NHC: this.nuevo_NHC, 
-                       nombre: this.nuevo_nombre,
-                       apellido1: this.nuevo_apellido1,
-                       apellido2: this.nuevo_apellido2,
-                       genero: this.nuevo_genero,
-                       fecha_nacimiento: this.nuevo_fecha_nacimiento,
-                       identificacion: this.nuevo_identificacion,
-                       direccion: this.nuevo_direccion,
-                       barrio: this.nuevo_barrio,
-                       ciudad: this.nuevo_ciudad,
-                       departamento: this.nuevo_departamento,
-                       nombre_aseguradora: this.nuevo_nombre_aseguradora,
-                       tipo_aseguradora: this.nuevo_tipo_aseguradora,
-                       numero_tarjeta: this.nuevo_numero_tarjeta
+                       tarjeta_pr: this.nuevo_tarjeta, 
+                       nombre_pr: this.nuevo_nombre_pr,
+                       apellido1_pr: this.nuevo_apellido1_pr,
+                       apellido2_pr: this.nuevo_apellido2_pr,
+                       genero_pr: this.nuevo_genero_pr,
+                       fecha_nacimiento_pr: this.nuevo_fecha_nacimiento_pr,
+                       identificacion_pr: this.nuevo_identificacion_pr,
+                       tipo_pr: this.nuevo_tipo_pr,
+                       direccion_pr: this.nuevo_direccion_pr,
+                       barrio_pr: this.nuevo_barrio_pr,
+                       ciudad_pr: this.nuevo_ciudad_pr,
+                       departamento_pr: this.nuevo_departamento_pr,
+                       
                    }
                     );
-           if(this.nuevo_NHC===''){
-               swal('Falta el NHC','Es un dato obligatorio','warning');
-           } else if(this.nuevo_nombre===''){
+           if(this.tarjeta_pr===''){
+               swal('Falta el Nº de tarjeta','Es un dato obligatorio','warning');
+           } else if(this.nuevo_nombre_pr===''){
                 swal('Falta el nombre','Es un dato obligatorio','warning');
-           }else if(this.nuevo_apellido1===''){
+           }else if(this.nuevo_apellido1_pr===''){
                swal('Falta el 1er apellido','Es un dato obligatorio','warning');
            }else{
-                       this.nuevo_NHC = '';
-                       this.nuevo_nombre = '';
-                       this.nuevo_apellido1 = '';
-                       this.nuevo_apellido2 = '';
-                       this.nuevo_genero = '';
-                       this.nuevo_fecha_nacimiento = '';
-                       this.nuevo_identificacion = '';
-                       this.nuevo_direccion = '';
-                       this.nuevo_barrio = '';
-                       this.nuevo_ciudad = '';
-                       this.nuevo_departamento = '';
-                       this.nuevo_nombre_aseguradora = '';
-                       this.nuevo_tipo_aseguradora = '';
-                       this.nuevo_numero_tarjeta = '';
-                       localStorage.setItem('usuarios-vue', JSON.stringify(this.pacientes));
-                       swal('Guardado','los datos del paciente se guardaron','success');
+                       this.nuevo_tarjeta = '';
+                       this.nuevo_nombre_pr = '';
+                       this.nuevo_apellido1_pr = '';
+                       this.nuevo_apellido2_pr = '';
+                       this.nuevo_genero_pr = '';
+                       this.nuevo_fecha_nacimiento_pr = '';
+                       this.nuevo_identificacion_pr = '';
+
+                       this.nuevo_direccion_pr = '';
+                       this.nuevo_barrio_pr = '';
+                       this.nuevo_ciudad_pr = '';
+                       this.nuevo_departamento_pr = '';
+                      
+                       localStorage.setItem('usuarios-vue', JSON.stringify(this.usuarios));
+                       swal('Guardado','los datos del profesional se guardaron','success');
            }
             
        },
@@ -242,9 +240,10 @@ created:function(){
      let datosDB = JSON.parse(localStorage.getItem('usuarios-vue')); 
      if(datosDB === null)
      {
-         this.pacientes =[];
+         this.usuarios =[];
+          
      }else{
-         this.pacientes =datosDB;
+         this.usuarios =datosDB;
      }
     }
 }
