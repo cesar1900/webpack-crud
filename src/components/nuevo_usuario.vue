@@ -130,7 +130,7 @@ export default {
 
     return {
         pacientes: [],
-        profesional:[],
+        profesionales:[],
         nuevo_NHC: '',
         nuevo_nombre: '', nuevo_apellido1: '',nuevo_apellido2: '',
         nuevo_genero: '', nuevo_fecha_nacimiento: '', nuevo_identificacion: '',
@@ -188,13 +188,13 @@ methods:{
                        this.nuevo_nombre_aseguradora = '';
                        this.nuevo_tipo_aseguradora = '';
                        this.nuevo_numero_tarjeta = '';
-                       localStorage.setItem('usuarios-vue', JSON.stringify(this.usuarios));
+                       localStorage.setItem('usuarios-vue', JSON.stringify(this.pacientes));
                        swal('Guardado','los datos del paciente se guardaron','success');
            }
             
        },
 agregar_profesional(){
-           this.pacientes.push(
+           this.profesionales.push(
                    {
                        tarjeta_pr: this.nuevo_tarjeta, 
                        nombre_pr: this.nuevo_nombre_pr,
@@ -211,7 +211,7 @@ agregar_profesional(){
                        
                    }
                     );
-           if(this.tarjeta_pr===''){
+           if(this.nuevo_tarjeta===''){
                swal('Falta el Nº de tarjeta','Es un dato obligatorio','warning');
            } else if(this.nuevo_nombre_pr===''){
                 swal('Falta el nombre','Es un dato obligatorio','warning');
@@ -231,7 +231,7 @@ agregar_profesional(){
                        this.nuevo_ciudad_pr = '';
                        this.nuevo_departamento_pr = '';
                       
-                       localStorage.setItem('usuarios-vue', JSON.stringify(this.usuarios));
+                       localStorage.setItem('usuarios-vue', JSON.stringify(this.profesionales));
                        swal('Guardado','los datos del profesional se guardaron','success');
            }
             
@@ -240,10 +240,11 @@ created:function(){
      let datosDB = JSON.parse(localStorage.getItem('usuarios-vue')); 
      if(datosDB === null)
      {
-         this.usuarios =[];
-          
+         this.pacientes =[];
+           this.profesionales =[];
      }else{
-         this.usuarios =datosDB;
+         this.pacientes =datosDB;
+         this.profesionales =datosDB;
      }
     }
 }
